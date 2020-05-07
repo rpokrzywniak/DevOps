@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+    name: redis-deployment
+    labels: 
+        app: myredis
+        type: cashe
+
+spec:
+    template:
+        metadata:
+            name: redis-pod
+            labels: 
+                app: myredis
+                type: cashe
+
+        spec:
+            containers:
+                - name: my-redis-container
+                  image: redis
+                
+                
+    replicas: 3
+    selector:
+        matchLabels:
+            type: cashe
