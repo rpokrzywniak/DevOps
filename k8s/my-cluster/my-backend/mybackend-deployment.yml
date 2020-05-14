@@ -21,10 +21,6 @@ spec:
                 - name: my-backend-container
                   image: rpokrzywniak/mybackend
                   env:
-                    - name: REDIS_HOST
-                      value: "myredisservice"
-                    - name: REDIS_PORT
-                      value: "6379"
                     - name: PGPASSWORD
                       valueFrom:
                         secretKeyRef:
@@ -38,6 +34,8 @@ spec:
                   envFrom:
                   - configMapRef:
                         name: postgres-config
+                  - configMapRef:
+                        name: redis-config
                 
                 
     replicas: 3
