@@ -14,4 +14,7 @@ spec:
       image: postgres
       env:
       - name: POSTGRES_PASSWORD
-        value: "1qaz2wsx3edc"
+        valueFrom:
+            secretKeyRef:
+                name: myapp-secret
+                key: PGPASSWORD

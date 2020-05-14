@@ -45,6 +45,10 @@ app.get('/:mass/:height', (req, resp) => {
     });
 });
 
+app.get('/', (req, resp) => {
+        resp.send({result: keys.initMessage});
+});
+
 app.listen(5000, err => {
     console.log('Server! listening on port 5000');
 });
