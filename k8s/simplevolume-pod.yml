@@ -1,0 +1,22 @@
+apiVersion: v1
+
+kind: Pod
+
+metadata:
+    name: number-generator-with-volume
+
+spec:
+    containers:
+        - image: alpine
+          name: alpine
+          command: ["/bin/sh", "-c"]
+          args: ["shuf -i 1-100 -n 1 >> /opt/numbers.txt;"]
+          volumeMounts:
+            - mountPath: /opt
+              name: data-volume
+          
+    volumes:
+        - name: data-volume
+          hostPath:
+            path: /Users/rober/Tmp/dockervolume
+            type: Directory
