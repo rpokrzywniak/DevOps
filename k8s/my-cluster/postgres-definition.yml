@@ -19,8 +19,9 @@ spec:
             - name: my-postgres-container
               image: postgres
               volumeMounts:
-                - mountPath: "/var/lib/postgresql/data/pgdata"
+                - mountPath: "postgres/var/lib/postgresql/data/pgdata"
                   name: postgresvolume
+                  subPath: postgres
               env:
               - name: PGDATA
                 value: "/var/lib/postgresql/data/pgdata"
